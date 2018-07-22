@@ -1,0 +1,18 @@
+#content {
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: small;
+    color: #525252;
+}
+
+#left-column {
+    padding-top: 1rem;
+    position: sticky;
+}
+
+.table td {
+    padding: 0.5rem;
+}
+
+th {
+    font-weight: bold;
+}

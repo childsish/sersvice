@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pipeline</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">Overview</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Pipeline</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="instructions.html">Instructions</a>
+                </li>
+            </ul>
+            <span class="navbar-text">v0.2.0</span>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div id="left-column" class="col-sm-2">
+            <h5 class="text-center">Annotation pipeline</h5>
+            <h6 class="text-center">Version: v0.2.0</h6>
+            <form>
+                <div class="form-group">
+                    <label for="input_file">Input VCF:</label>
+                    <input id="input_file" class="form-control" type="file" disabled/>
+                    <small class="form-text text-muted">The variants you wish to annotate.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="fasta_file">Reference sequence:</label>
+                    <input id="fasta_file" class="form-control" type="file" multiple disabled/>
+                    <small class="form-text text-muted">The sequence the reads were mapped against. Make sure to select both the data and the index files.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="models_file">Gene models:</label>
+                    <input id="models_file" class="form-control" type="file" multiple disabled/>
+                    <small class="form-text text-muted">The gene models for the reference sequence. Make sure to select both the data and the index files.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="variants_file">SNP database:</label>
+                    <input id="variants_file" class="form-control" type="file" multiple disabled/>
+                    <small class="form-text text-muted">A list of SNPs discovered on the reference sequence. Make sure to select both the data and the index files.</small>
+                </div>
+            </form>
+            <button id="run" class="btn btn-primary btn-block" disabled>Run</button>
+        </div>
+        <div id="right-column" class="col-sm-10">
+            <div><table id="content" class="table">
+            </table></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+<script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pipeline</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">Overview</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Pipeline</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="instructions.html">Instructions</a>
+                </li>
+            </ul>
+            <span class="navbar-text">v1.0.0</span>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div id="left-column" class="col-sm-2">
+            <h5 class="text-center">Annotation pipeline</h5>
+            <h6 class="text-center">Version: v1.0.0</h6>
+            <form>
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <label for="input_file">Input VCF</label>
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <input id="input_file" class="form-control-sm" type="file" disabled/>
+                                <small class="form-text text-muted">The variants you wish to annotate (Potential extensions: .vcf).</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <label for="fasta_file">Reference sequence</label>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <input id="fasta_file" class="form-control-sm" type="file" multiple disabled/>
+                                <small class="form-text text-muted">The sequence the reads were mapped against. Make sure to select both the data and the index files (Potential extensions: .fasta/.fasta.fai, .fa/.fa.fai).</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <label for="models_file">Gene models</label>
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <input id="models_file" class="form-control-sm" type="file" multiple disabled/>
+                                <small class="form-text text-muted">The gene models for the reference sequence. Make sure to select both the data and the index files (Potential extensions: .gff.gz/.gff.gz.tbi, .gtf.gz/.gtf.gz.tbi).</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingFour">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    <label for="variants_file">SNP database</label>
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <input id="variants_file" class="form-control-sm" type="file" multiple disabled/>
+                                <small class="form-text text-muted">A list of SNPs discovered on the reference sequence. Make sure to select both the data and the index files (Potential extensions: .vcf.gz/.vcf.gz.tbi).</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingFive">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    <label for="bounds_file">Panel design</label>
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <input id="bounds_file" class="form-control-sm" type="file" multiple disabled/>
+                                <small class="form-text text-muted">A list of intervals within which the variants lie. The closest edge to the variant will be reported. Make sure to select both the data and index files (Potential extensions: .bed.gz/.bed.gz.tbi).</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <button id="run" class="btn btn-primary btn-block" disabled>Run</button>
+        </div>
+        <div id="right-column" class="col-sm-10">
+            <div><table id="content" class="table">
+            </table></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+<script src="index.js"></script>
+</body>
+</html>
